@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import "./globals.css";
+import { TransactionsProvider } from "./_contexts/transactions-context";
+import { Toaster } from "@/components/ui/sonner";
 
 const mulish = Mulish({
   subsets: ["latin-ext"],
@@ -20,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="">
       <body className={`${mulish.variable} font-sans antialiased`}>
-        {children}
+        <TransactionsProvider>
+          {children}
+          <Toaster />
+        </TransactionsProvider>
       </body>
     </html>
   );

@@ -9,6 +9,7 @@ import TransactionPieChart from "./_components/transaction-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import AddTransactionButton from "@/app/_components/add-transaction-button";
 import { getDashboardData } from "./_data/mock-data";
+import { useTransactions } from "./_contexts/transactions-context";
 
 const Home = () => {
   const searchParams = useSearchParams();
@@ -17,7 +18,8 @@ const Home = () => {
     ? parseInt(monthParam)
     : new Date().getMonth() + 1;
 
-  const dashboardData = getDashboardData(currentMonth);
+  const { transactions } = useTransactions();
+  const dashboardData = getDashboardData(transactions, currentMonth);
 
   return (
     <>

@@ -44,3 +44,31 @@ export const MONTHS = [
   { value: "11", label: "Novembro" },
   { value: "12", label: "Dezembro" },
 ];
+
+export const TRANSACTION_TYPE_OPTIONS = [
+  { value: "EXPENSE", label: "Despesa" },
+  { value: "DEPOSIT", label: "Depósito" },
+  { value: "INVESTMENT", label: "Investimento" },
+];
+
+export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
+  { value: "CREDIT_CARD", label: "Cartão de crédito" },
+  { value: "DEBIT_CARD", label: "Cartão de débito" },
+  { value: "BANK_TRANSFER", label: "Transferência bancária" },
+  { value: "BANK_SLIP", label: "Boleto bancário" },
+  { value: "CASH", label: "Dinheiro" },
+  { value: "PIX", label: "Pix" },
+  { value: "OTHER", label: "Outros" },
+];
+
+export const TRANSACTION_CATEGORY_OPTIONS = [
+  { value: "HOUSING", label: "Moradia" },
+  { value: "TRANSPORTATION", label: "Transporte" },
+  { value: "FOOD", label: "Alimentação" },
+  { value: "ENTERTAINMENT", label: "Lazer" },
+  { value: "HEALTH", label: "Saúde" },
+  { value: "UTILITY", label: "Utilidades" },
+  { value: "SALARY", label: "Salário" },
+  { value: "EDUCATION", label: "Educação" },
+  { value: "OTHER", label: "Outros" },
+];

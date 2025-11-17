@@ -99,25 +99,31 @@ export const mockTransactions: Transaction[] = [
   },
 ];
 
-const getTransactionsByMonth = (month: number): Transaction[] => {
-  return mockTransactions.filter((transaction) => {
+const getTransactionsByMonth = (
+  transactions: Transaction[],
+  month: number
+): Transaction[] => {
+  return transactions.filter((transaction) => {
     const transactionDate = new Date(transaction.date);
     return transactionDate.getMonth() + 1 === month;
   });
 };
 
-export const getDashboardData = (month: number): DashboardData => {
-  const transactions = getTransactionsByMonth(month);
+export const getDashboardData = (
+  transactions: Transaction[],
+  month: number
+): DashboardData => {
+  const filteredTransactions = getTransactionsByMonth(transactions, month);
 
-  const depositsTotal = transactions
+  const depositsTotal = filteredTransactions
     .filter((t) => t.type === TransactionType.DEPOSIT)
     .reduce((sum, t) => sum + t.amount, 0);
 
-  const expensesTotals = transactions
+  const expensesTotals = filteredTransactions
     .filter((t) => t.type === TransactionType.EXPENSE)
     .reduce((sum, t) => sum + t.amount, 0);
 
-  const investimentTotals = transactions
+  const investimentTotals = filteredTransactions
     .filter((t) => t.type === TransactionType.INVESTMENT)
     .reduce((sum, t) => sum + t.amount, 0);
 
@@ -132,7 +138,7 @@ export const getDashboardData = (month: number): DashboardData => {
       total > 0 ? (investimentTotals / total) * 100 : 0,
   };
 
-  const expenseByCategory = transactions
+  const expenseByCategory = filteredTransactions
     .filter((t) => t.type === TransactionType.EXPENSE)
     .reduce(
       (acc, t) => {
@@ -162,7 +168,7 @@ export const getDashboardData = (month: number): DashboardData => {
 
   expenseByCategory.sort((a, b) => b.totalAmount - a.totalAmount);
 
-  const lastTransaction = transactions
+  const lastTransaction = filteredTransactions
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 15);
 
