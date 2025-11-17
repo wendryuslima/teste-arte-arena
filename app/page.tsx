@@ -1,12 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import NavBar from "@/components/nav-bar";
+import NavBar from "@/app/_components/nav-bar";
 import DashboardHeader from "./_components/dashboard-header";
 import SummaryCards from "./_components/summary-cards";
 import TransactionPieChart from "./_components/transaction-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
-import AddTransactionButton from "@/components/add-transaction-button";
+import AddTransactionButton from "@/app/_components/add-transaction-button";
 import { getDashboardData } from "./_data/mock-data";
 
 const Home = () => {
