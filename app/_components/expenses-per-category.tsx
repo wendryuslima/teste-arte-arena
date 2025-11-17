@@ -13,7 +13,7 @@ interface ExpensesPerCategoryProps {
 
 const ExpensesPerCategory = ({ data }: ExpensesPerCategoryProps) => {
   return (
-    <Card className="col-span-2">
+    <Card>
       <CardHeader>
         <CardTitle className="font-semibold">Gastos por categoria</CardTitle>
       </CardHeader>

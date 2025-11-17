@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import NavBar from "@/app/_components/nav-bar";
 import DashboardHeader from "./_components/dashboard-header";
+import BalanceCard from "./_components/balance-card";
 import SummaryCards from "./_components/summary-cards";
 import TransactionPieChart from "./_components/transaction-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
@@ -21,21 +22,27 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <div className="flex flex-col gap-6 p-10">
-        <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col gap-6 overflow-hidden p-10 lg:overflow-hidden">
+        <div className="flex items-center justify-center">
           <h1 className="text-2xl font-bold">Dashboard</h1>
-          <p className="text-sm font-bold text-muted-foreground">Finance App</p>
-          <div className="flex w-full items-center justify-between">
+        </div>
+
+        <div className="flex flex-col items-center justify-between">
+          <div className="flex items-center gap-3">
             <DashboardHeader />
             <AddTransactionButton />
           </div>
         </div>
 
-        <SummaryCards data={dashboardData} />
+        <div className="flex flex-col gap-4 lg:overflow-hidden">
+          <BalanceCard data={dashboardData} />
 
-        <div className="grid gap-6 lg:grid-cols-[1fr,2fr]">
-          <TransactionPieChart data={dashboardData} />
-          <ExpensesPerCategory data={dashboardData} />
+          <SummaryCards data={dashboardData} />
+
+          <div className="grid gap-6 lg:grid-cols-[1fr,2fr]">
+            <TransactionPieChart data={dashboardData} />
+            <ExpensesPerCategory data={dashboardData} />
+          </div>
         </div>
       </div>
     </>
