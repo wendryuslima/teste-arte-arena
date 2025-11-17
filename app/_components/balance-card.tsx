@@ -11,7 +11,7 @@ interface BalanceCardProps {
 
 const BalanceCard = ({ data }: BalanceCardProps) => {
   return (
-    <Card className="w-full border-primary/20 bg-primary/5">
+    <Card className="w-full border-primary/20 bg-primary/5 animate-slide-up">
       <CardContent className="flex flex-col gap-4 p-6">
         <div className="flex items-center gap-3">
           <div className="rounded-lg bg-primary/10 p-2">

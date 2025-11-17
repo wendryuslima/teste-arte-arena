@@ -2,6 +2,7 @@
 
 import NavBar from "@/app/_components/nav-bar";
 import AddTransactionButton from "@/app/_components/add-transaction-button";
+import { EmptyTransactions } from "@/app/_components/empty-states";
 import { useTransactions } from "@/app/_contexts/transactions-context";
 import DataTable from "./_components/data-table";
 import { columns } from "./_components/columns";
@@ -18,7 +19,11 @@ const TransactionsPage = () => {
           <AddTransactionButton />
         </div>
 
-        <DataTable columns={columns} data={transactions} />
+        {transactions.length === 0 ? (
+          <EmptyTransactions />
+        ) : (
+          <DataTable columns={columns} data={transactions} />
+        )}
       </div>
     </>
   );

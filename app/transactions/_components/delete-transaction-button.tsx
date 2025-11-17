@@ -50,12 +50,12 @@ const DeleteTransactionButton = ({
           <Trash2 size={16} />
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent aria-describedby="delete-description">
         <AlertDialogHeader>
-          <AlertDialogTitle>
+          <AlertDialogTitle id="delete-title">
             Você deseja realmente deletar essa transação?
           </AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogDescription id="delete-description">
             A transação <strong>{transactionName}</strong> será permanentemente
             removida. Essa ação não pode ser desfeita.
           </AlertDialogDescription>

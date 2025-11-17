@@ -1,6 +1,15 @@
 "use client";
 
-import * as React from "react";
+import { EmptySearchResults } from "@/app/_components/empty-states";
+import { Button } from "@/app/_components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/app/_components/ui/table";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -13,13 +22,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/app/_components/ui/table";
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
+import * as React from "react";
 import TransactionsToolbar from "./transactions-toolbar";
 
 interface DataTableProps<TData, TValue> {
@@ -64,11 +72,17 @@ const DataTable = <TData, TValue>({
     setColumnFilters(buildFilters());
   }, [buildFilters]);
 
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+
   const table = useReactTable({
     data,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -76,11 +90,12 @@ const DataTable = <TData, TValue>({
     state: {
       sorting,
       columnFilters,
+      pagination,
     },
   });
 
   return (
-    <div className="w-full space-y-4">
+    <div className="animate-fade-in w-full space-y-4">
       <TransactionsToolbar
         searchValue={searchValue}
         onSearchChange={setSearchValue}
@@ -89,13 +104,13 @@ const DataTable = <TData, TValue>({
         categoryFilter={categoryFilter}
         onCategoryFilterChange={setCategoryFilter}
       />
-      <div className="rounded-md border">
-        <Table>
+      <div className="animate-slide-up rounded-md border">
+        <Table role="table" aria-label="Tabela de transações">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} scope="col">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -113,6 +128,7 @@ const DataTable = <TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="transition-colors hover:bg-muted/50"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -126,16 +142,74 @@ const DataTable = <TData, TValue>({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  Nenhuma transação encontrada.
+                <TableCell colSpan={columns.length} className="h-96 p-0">
+                  <EmptySearchResults />
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
+      </div>
+      <div className="flex items-center justify-between px-2">
+        <div className="flex-1 text-sm text-muted-foreground">
+          Mostrando{" "}
+          {table.getState().pagination.pageIndex *
+            table.getState().pagination.pageSize +
+            1}{" "}
+          a{" "}
+          {Math.min(
+            (table.getState().pagination.pageIndex + 1) *
+              table.getState().pagination.pageSize,
+            table.getFilteredRowModel().rows.length
+          )}{" "}
+          de {table.getFilteredRowModel().rows.length} transação(ões)
+        </div>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
+            aria-label="Primeira página"
+          >
+            <ChevronsLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            aria-label="Página anterior"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <div className="flex items-center gap-1 text-sm font-medium">
+            <span>Página</span>
+            <span className="font-bold">
+              {table.getState().pagination.pageIndex + 1}
+            </span>
+            <span>de</span>
+            <span className="font-bold">{table.getPageCount()}</span>
+          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            aria-label="Próxima página"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            disabled={!table.getCanNextPage()}
+            aria-label="Última página"
+          >
+            <ChevronsRight className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
     </div>
   );

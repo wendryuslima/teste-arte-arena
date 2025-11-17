@@ -8,8 +8,11 @@ const AddTransactionButton = () => {
   return (
     <UpsertTransactionDialog
       trigger={
-        <Button className="rounded-full font-bold">
-          <ArrowDownUp size={16} />
+        <Button
+          className="rounded-full font-bold transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          aria-label="Adicionar nova transação"
+        >
+          <ArrowDownUp size={16} aria-hidden="true" />
           Adicionar transação
         </Button>
       }

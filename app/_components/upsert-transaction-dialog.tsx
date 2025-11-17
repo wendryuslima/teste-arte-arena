@@ -59,13 +59,24 @@ const UpsertTransactionDialog = ({
       }}
     >
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-      <DialogContent className="max-h-[80vh] w-[350px] overflow-y-auto lg:w-[500px] [&::-webkit-scrollbar]:hidden">
+      <DialogContent
+        className="max-h-[80vh] w-[350px] overflow-y-auto lg:w-[500px] [&::-webkit-scrollbar]:hidden"
+        aria-describedby="dialog-description"
+      >
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center gap-2" id="dialog-title">
             {isUpdate ? "Atualizar" : "Adicionar transação"}
-            {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+            {isLoading && (
+              <Loader2
+                className="h-4 w-4 animate-spin"
+                aria-label="Carregando"
+                aria-live="polite"
+              />
+            )}
           </DialogTitle>
-          <DialogDescription>Insira as informações abaixo</DialogDescription>
+          <DialogDescription id="dialog-description">
+            Insira as informações abaixo
+          </DialogDescription>
         </DialogHeader>
 
         <TransactionForm

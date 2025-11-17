@@ -8,12 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/_components/ui/select";
-import { Search } from "lucide-react";
 import {
-  TRANSACTION_TYPE_OPTIONS,
   TRANSACTION_CATEGORY_OPTIONS,
+  TRANSACTION_TYPE_OPTIONS,
 } from "@/app/_lib/constants/transactions";
-import { TransactionType, TransactionCategory } from "@/app/_types/transaction";
+import { Search } from "lucide-react";
 
 interface TransactionsToolbarProps {
   searchValue: string;
@@ -33,19 +32,32 @@ const TransactionsToolbar = ({
   onCategoryFilterChange,
 }: TransactionsToolbarProps) => {
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <div
+      className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"
+      role="toolbar"
+      aria-label="Filtros e busca de transações"
+    >
       <div className="relative flex-1">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <Search
+          className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+          aria-hidden="true"
+        />
         <Input
           placeholder="Buscar por nome..."
           value={searchValue}
           onChange={(e) => onSearchChange(e.target.value)}
           className="pl-9"
+          aria-label="Buscar transações por nome"
+          type="search"
         />
       </div>
 
       <div className="flex gap-2">
-        <Select value={typeFilter} onValueChange={onTypeFilterChange}>
+        <Select
+          value={typeFilter}
+          onValueChange={onTypeFilterChange}
+          aria-label="Filtrar por tipo de transação"
+        >
           <SelectTrigger className="w-[150px]">
             <SelectValue placeholder="Tipo" />
           </SelectTrigger>
@@ -59,7 +71,11 @@ const TransactionsToolbar = ({
           </SelectContent>
         </Select>
 
-        <Select value={categoryFilter} onValueChange={onCategoryFilterChange}>
+        <Select
+          value={categoryFilter}
+          onValueChange={onCategoryFilterChange}
+          aria-label="Filtrar por categoria"
+        >
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Categoria" />
           </SelectTrigger>

@@ -10,7 +10,7 @@ interface SummaryCardsProps {
 
 const SummaryCards = ({ data }: SummaryCardsProps) => {
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
       <SummaryCardItem
         icon={PiggyBank}
         label="Investido"

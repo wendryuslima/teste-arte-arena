@@ -17,16 +17,27 @@ import { Button } from "@/app/_components/ui/button";
 
 const createSortableHeader =
   (label: string) =>
-  ({ column }: HeaderContext<Transaction, unknown>) => (
-    <Button
-      variant="ghost"
-      onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      className="h-8 px-2 lg:px-3"
-    >
-      {label}
-      <ArrowUpDown className="ml-2 h-4 w-4" />
-    </Button>
-  );
+  ({ column }: HeaderContext<Transaction, unknown>) => {
+    const sortDirection = column.getIsSorted();
+    return (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        className="h-8 px-2 lg:px-3"
+        aria-label={`Ordenar por ${label} ${sortDirection === "asc" ? "crescente" : sortDirection === "desc" ? "decrescente" : ""}`}
+        aria-sort={
+          sortDirection === "asc"
+            ? "ascending"
+            : sortDirection === "desc"
+              ? "descending"
+              : "none"
+        }
+      >
+        {label}
+        <ArrowUpDown className="ml-2 h-4 w-4" aria-hidden="true" />
+      </Button>
+    );
+  };
 
 export const columns: ColumnDef<Transaction>[] = [
   {

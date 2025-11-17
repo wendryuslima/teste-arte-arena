@@ -55,7 +55,7 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
   };
 
   return (
-    <Card>
+    <Card className="animate-scale-in">
       <CardHeader>
         <CardTitle className="font-semibold">Distribuição por tipo</CardTitle>
       </CardHeader>
