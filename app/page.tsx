@@ -13,9 +13,7 @@ import { useDashboardData } from "@/app/_hooks/use-dashboard-data";
 const Home = () => {
   const searchParams = useSearchParams();
   const monthParam = searchParams.get("month");
-  const currentMonth = monthParam
-    ? parseInt(monthParam)
-    : new Date().getMonth() + 1;
+  const currentMonth = monthParam ? parseInt(monthParam, 10) : 1;
 
   const dashboardData = useDashboardData(currentMonth);
 

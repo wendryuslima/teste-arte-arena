@@ -13,9 +13,8 @@ import { MONTHS } from "./_constants/transactions";
 const DashboardHeader = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currentMonth =
-    searchParams.get("month") ||
-    String(new Date().getMonth() + 1).padStart(2, "0");
+  const monthParam = searchParams.get("month");
+  const currentMonth = monthParam || "01";
 
   const handleMonthChange = (value: string) => {
     router.push(`/?month=${value}`);

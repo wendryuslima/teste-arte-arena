@@ -24,32 +24,37 @@ export const TransactionsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] =
+    useState<Transaction[]>(mockTransactions);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    if (isInitialized) return;
+
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setTransactions(
-          parsed.map((t: Transaction) => ({
-            ...t,
-            date: new Date(t.date),
-          }))
-        );
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setTransactions(
+            parsed.map((t: Transaction) => ({
+              ...t,
+              date: new Date(t.date),
+            }))
+          );
+        }
       } catch {
         setTransactions(mockTransactions);
       }
-    } else {
-      setTransactions(mockTransactions);
     }
-  }, []);
+    setIsInitialized(true);
+  }, [isInitialized]);
 
   useEffect(() => {
-    if (transactions.length > 0) {
+    if (isInitialized && transactions.length > 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
     }
-  }, [transactions]);
+  }, [transactions, isInitialized]);
 
   const addTransaction = (
     transaction: Omit<Transaction, "id" | "createdAt" | "updatedAt">
