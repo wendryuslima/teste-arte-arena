@@ -6,7 +6,7 @@ import { formatCurrency } from "@/app/_lib/utils/currency";
 import {
   TRANSACTION_CATEGORY_LABELS,
   TRANSACTION_PAYMENT_METHOD_LABELS,
-} from "@/app/_components/_constants/transactions";
+} from "@/app/_lib/constants/transactions";
 import TransactionTypeBadge from "./transaction-type-badge";
 import EditTransactionButton from "./edit-transaction-button";
 import DeleteTransactionButton from "./delete-transaction-button";

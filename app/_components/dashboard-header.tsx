@@ -1,6 +1,5 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -8,7 +7,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/_components/ui/select";
-import { MONTHS } from "./_constants/transactions";
+import { MONTHS } from "@/app/_lib/constants/transactions";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const DashboardHeader = () => {
   const searchParams = useSearchParams();

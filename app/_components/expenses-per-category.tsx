@@ -8,7 +8,7 @@ import {
 } from "@/app/_components/ui/card";
 import { ScrollArea } from "@/app/_components/ui/scroll-area";
 import { Progress } from "@/app/_components/ui/progress";
-import { TRANSACTION_CATEGORY_LABELS } from "./_constants/transactions";
+import { TRANSACTION_CATEGORY_LABELS } from "@/app/_lib/constants/transactions";
 import { DashboardData } from "@/app/_types/transaction";
 import { formatCurrency } from "@/app/_lib/utils/currency";
 

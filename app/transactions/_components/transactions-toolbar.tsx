@@ -12,7 +12,7 @@ import { Search } from "lucide-react";
 import {
   TRANSACTION_TYPE_OPTIONS,
   TRANSACTION_CATEGORY_OPTIONS,
-} from "@/app/_components/_constants/transactions";
+} from "@/app/_lib/constants/transactions";
 import { TransactionType, TransactionCategory } from "@/app/_types/transaction";
 
 interface TransactionsToolbarProps {

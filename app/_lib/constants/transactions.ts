@@ -4,6 +4,7 @@ import {
   TransactionType,
 } from "@/app/_types/transaction";
 
+// Fonte única de verdade para labels
 export const TRANSACTION_CATEGORY_LABELS: Record<TransactionCategory, string> =
   {
     [TransactionCategory.HOUSING]: "Moradia",
@@ -30,6 +31,25 @@ export const TRANSACTION_PAYMENT_METHOD_LABELS: Record<
   [TransactionPaymentMethod.OTHER]: "Outros",
 };
 
+export const TRANSACTION_TYPE_LABELS: Record<TransactionType, string> = {
+  [TransactionType.EXPENSE]: "Despesa",
+  [TransactionType.DEPOSIT]: "Depósito",
+  [TransactionType.INVESTMENT]: "Investimento",
+};
+
+// Derivar arrays de opções dos labels
+export const TRANSACTION_TYPE_OPTIONS = Object.entries(
+  TRANSACTION_TYPE_LABELS
+).map(([value, label]) => ({ value, label }));
+
+export const TRANSACTION_PAYMENT_METHOD_OPTIONS = Object.entries(
+  TRANSACTION_PAYMENT_METHOD_LABELS
+).map(([value, label]) => ({ value, label }));
+
+export const TRANSACTION_CATEGORY_OPTIONS = Object.entries(
+  TRANSACTION_CATEGORY_LABELS
+).map(([value, label]) => ({ value, label }));
+
 export const MONTHS = [
   { value: "01", label: "Janeiro" },
   { value: "02", label: "Fevereiro" },
@@ -45,30 +65,3 @@ export const MONTHS = [
   { value: "12", label: "Dezembro" },
 ];
 
-export const TRANSACTION_TYPE_OPTIONS = [
-  { value: "EXPENSE", label: "Despesa" },
-  { value: "DEPOSIT", label: "Depósito" },
-  { value: "INVESTMENT", label: "Investimento" },
-];
-
-export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
-  { value: "CREDIT_CARD", label: "Cartão de crédito" },
-  { value: "DEBIT_CARD", label: "Cartão de débito" },
-  { value: "BANK_TRANSFER", label: "Transferência bancária" },
-  { value: "BANK_SLIP", label: "Boleto bancário" },
-  { value: "CASH", label: "Dinheiro" },
-  { value: "PIX", label: "Pix" },
-  { value: "OTHER", label: "Outros" },
-];
-
-export const TRANSACTION_CATEGORY_OPTIONS = [
-  { value: "HOUSING", label: "Moradia" },
-  { value: "TRANSPORTATION", label: "Transporte" },
-  { value: "FOOD", label: "Alimentação" },
-  { value: "ENTERTAINMENT", label: "Lazer" },
-  { value: "HEALTH", label: "Saúde" },
-  { value: "UTILITY", label: "Utilidades" },
-  { value: "SALARY", label: "Salário" },
-  { value: "EDUCATION", label: "Educação" },
-  { value: "OTHER", label: "Outros" },
-];

@@ -1,14 +1,16 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import NavBar from "@/app/_components/nav-bar";
-import DashboardHeader from "./_components/dashboard-header";
-import BalanceCard from "./_components/balance-card";
-import SummaryCards from "./_components/summary-cards";
-import TransactionPieChart from "./_components/transaction-pie-chart";
-import ExpensesPerCategory from "./_components/expenses-per-category";
+
 import AddTransactionButton from "@/app/_components/add-transaction-button";
+import NavBar from "@/app/_components/nav-bar";
 import { useDashboardData } from "@/app/_hooks/use-dashboard-data";
+
+import BalanceCard from "@/app/_components/balance-card";
+import DashboardHeader from "@/app/_components/dashboard-header";
+import ExpensesPerCategory from "@/app/_components/expenses-per-category";
+import SummaryCards from "@/app/_components/summary-cards";
+import TransactionPieChart from "@/app/_components/transaction-pie-chart";
 
 const Home = () => {
   const searchParams = useSearchParams();
