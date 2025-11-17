@@ -23,8 +23,11 @@ const Home = () => {
     <>
       <NavBar />
       <div className="flex flex-col gap-6 overflow-hidden p-10 lg:overflow-hidden">
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <h1 className="text-2xl font-bold">Dashboard</h1>
+          <p className="text-sm font-bold text-gray-600">
+            Seu assistente financeiro
+          </p>
         </div>
 
         <div className="flex flex-col items-center justify-between">

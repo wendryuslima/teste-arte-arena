@@ -17,7 +17,7 @@ const BalanceCard = ({ data }: BalanceCardProps) => {
           <div className="rounded-lg bg-primary/10 p-2">
             <Wallet size={16} className="text-primary" />
           </div>
-          <span className="text-sm font-semibold text-muted-foreground">
+          <span className="text-sm font-semibold">
             Saldo
           </span>
         </div>

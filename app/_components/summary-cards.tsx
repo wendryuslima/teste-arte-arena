@@ -18,9 +18,7 @@ const SummaryCards = ({ data }: SummaryCardsProps) => {
             <div className="rounded-lg bg-muted p-2">
               <PiggyBank size={16} className="text-foreground" />
             </div>
-            <span className="text-sm font-semibold text-muted-foreground">
-              Investido
-            </span>
+            <span className="text-sm font-semibold">Investido</span>
           </div>
           <p className="text-2xl font-bold text-foreground">
             {formatCurrency(data.investimentTotals)}
@@ -34,9 +32,7 @@ const SummaryCards = ({ data }: SummaryCardsProps) => {
             <div className="rounded-lg bg-primary/10 p-2">
               <TrendingUp size={16} className="text-primary" />
             </div>
-            <span className="text-sm font-semibold text-muted-foreground">
-              Receita
-            </span>
+            <span className="text-sm font-semibold">Receita</span>
           </div>
           <p className="text-2xl font-bold text-primary">
             {formatCurrency(data.depositsTotal)}
@@ -50,9 +46,7 @@ const SummaryCards = ({ data }: SummaryCardsProps) => {
             <div className="rounded-lg bg-destructive/10 p-2">
               <TrendingDown size={14} className="text-destructive" />
             </div>
-            <span className="text-sm font-semibold text-muted-foreground">
-              Despesas
-            </span>
+            <span className="text-sm font-semibold">Despesas</span>
           </div>
           <p className="text-2xl font-bold text-destructive">
             {formatCurrency(data.expensesTotals)}
