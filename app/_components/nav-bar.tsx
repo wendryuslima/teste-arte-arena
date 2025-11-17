@@ -27,16 +27,6 @@ const NavBar = () => {
         >
           Transações
         </Link>
-        <Link
-          href="/subscription"
-          className={`text-base lg:text-xl ${
-            pathname === "/subscription"
-              ? "font-bold text-primary"
-              : "text-muted-foreground"
-          }`}
-        >
-          Assinatura
-        </Link>
       </div>
     </nav>
   );

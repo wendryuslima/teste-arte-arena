@@ -46,6 +46,7 @@ import {
 } from "@/types/transaction";
 import { useTransactions } from "@/app/_contexts/transactions-context";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const transactionSchema = z.object({
   name: z.string().trim().min(1, { message: "O nome é obrigatório" }),
@@ -88,6 +89,7 @@ const UpsertTransactionDialog = ({
       date: new Date(),
     },
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (transaction) {
@@ -104,6 +106,7 @@ const UpsertTransactionDialog = ({
 
   const onSubmit = (values: TransactionFormValues) => {
     try {
+      setIsLoading(true);
       if (isUpdate && transaction) {
         updateTransaction(transaction.id, values);
         toast.success("Transação atualizada com sucesso");
@@ -115,6 +118,8 @@ const UpsertTransactionDialog = ({
       form.reset();
     } catch (error) {
       toast.error("Erro ao salvar transação. Tente novamente");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -132,7 +137,8 @@ const UpsertTransactionDialog = ({
       <DialogContent className="max-h-[80vh] w-[350px] overflow-y-auto lg:w-[500px] [&::-webkit-scrollbar]:hidden">
         <DialogHeader>
           <DialogTitle>
-            {isUpdate ? "Atualizar" : ""} Adicionar transação
+            {isUpdate ? "Atualizar" : "Adicionar transação"}
+            {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
           </DialogTitle>
           <DialogDescription>Insira as informações abaixo</DialogDescription>
         </DialogHeader>

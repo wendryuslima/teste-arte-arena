@@ -8,8 +8,7 @@ import SummaryCards from "./_components/summary-cards";
 import TransactionPieChart from "./_components/transaction-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import AddTransactionButton from "@/app/_components/add-transaction-button";
-import { getDashboardData } from "./_data/mock-data";
-import { useTransactions } from "./_contexts/transactions-context";
+import { useDashboardData } from "@/hooks/use-dashboard-data";
 
 const Home = () => {
   const searchParams = useSearchParams();
@@ -18,8 +17,7 @@ const Home = () => {
     ? parseInt(monthParam)
     : new Date().getMonth() + 1;
 
-  const { transactions } = useTransactions();
-  const dashboardData = getDashboardData(transactions, currentMonth);
+  const dashboardData = useDashboardData(currentMonth);
 
   return (
     <>
