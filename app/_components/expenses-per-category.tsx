@@ -22,7 +22,7 @@ const ExpensesPerCategory = ({ data }: ExpensesPerCategoryProps) => {
           <div className="space-y-6 p-6">
             {data.totalExpensePerCategory.map((item) => (
               <div key={item.category} className="space-y-2">
-                <div className="flex justify-between w-full">
+                <div className="flex w-full justify-between">
                   <span className="text-sm font-bold">
                     {TRANSACTION_CATEGORY_LABELS[item.category]}
                   </span>
@@ -44,4 +44,3 @@ const ExpensesPerCategory = ({ data }: ExpensesPerCategoryProps) => {
 };
 
 export default ExpensesPerCategory;
-

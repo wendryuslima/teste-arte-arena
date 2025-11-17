@@ -21,23 +21,21 @@ const DashboardHeader = () => {
     router.push(`/?month=${value}`);
   };
 
+  const selectedMonth = MONTHS.find((m) => m.value === currentMonth);
+
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <Select value={currentMonth} onValueChange={handleMonthChange}>
-          <SelectTrigger className="w-[150px] rounded-full">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {MONTHS.map((month) => (
-              <SelectItem key={month.value} value={month.value}>
-                {month.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    </div>
+    <Select value={currentMonth} onValueChange={handleMonthChange}>
+      <SelectTrigger className="w-[150px] rounded-full">
+        <SelectValue placeholder={selectedMonth?.label || "Selecione"} />
+      </SelectTrigger>
+      <SelectContent>
+        {MONTHS.map((month) => (
+          <SelectItem key={month.value} value={month.value}>
+            {month.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 };
 

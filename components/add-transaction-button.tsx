@@ -13,4 +13,3 @@ const AddTransactionButton = () => {
 };
 
 export default AddTransactionButton;
-

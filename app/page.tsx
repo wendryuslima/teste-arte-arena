@@ -22,11 +22,9 @@ const Home = () => {
     <>
       <NavBar />
       <div className="flex flex-col gap-6 p-10">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col items-center justify-center gap-2">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-          </div>
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col items-center gap-4">
+          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <div className="flex w-full items-center justify-between">
             <DashboardHeader />
             <AddTransactionButton />
           </div>

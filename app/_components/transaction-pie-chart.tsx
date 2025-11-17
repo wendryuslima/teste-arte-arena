@@ -55,7 +55,10 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
         <CardTitle className="font-semibold">Distribuição por tipo</CardTitle>
       </CardHeader>
       <CardContent className="p-6">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <Pie
@@ -114,4 +117,3 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
 };
 
 export default TransactionPieChart;
-
