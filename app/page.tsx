@@ -24,6 +24,7 @@ const Home = () => {
       <div className="flex flex-col gap-6 p-10">
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-2xl font-bold">Dashboard</h1>
+          <p className="text-sm font-bold text-muted-foreground">Finance App</p>
           <div className="flex w-full items-center justify-between">
             <DashboardHeader />
             <AddTransactionButton />

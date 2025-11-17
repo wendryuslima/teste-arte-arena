@@ -25,7 +25,7 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
     {
       name: "Investido",
       value: data.typePercentage[TransactionType.INVESTMENT],
-      fill: "#FFFFFF",
+      fill: "#94A3B8",
     },
     {
       name: "Despesas",
@@ -41,7 +41,7 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
     },
     investido: {
       label: "Investido",
-      color: "#FFFFFF",
+      color: "#94A3B8",
     },
     despesas: {
       label: "Despesas",
@@ -78,7 +78,7 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
         </ChartContainer>
         <div className="mt-6 space-y-3">
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-white bg-opacity-[3%] p-2">
+            <div className="rounded-lg bg-primary/10 p-2">
               <TrendingUp size={16} className="text-primary" />
             </div>
             <div className="flex flex-1 items-center justify-between">
@@ -89,8 +89,8 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-white bg-opacity-[3%] p-2">
-              <PiggyBank size={16} className="text-white" />
+            <div className="rounded-lg bg-muted p-2">
+              <PiggyBank size={16} className="text-foreground" />
             </div>
             <div className="flex flex-1 items-center justify-between">
               <span className="text-sm font-semibold">Investido</span>
@@ -100,8 +100,8 @@ const TransactionPieChart = ({ data }: TransactionPieChartProps) => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-white bg-opacity-[3%] p-2">
-              <TrendingDown size={16} className="text-red-500" />
+            <div className="rounded-lg bg-destructive/10 p-2">
+              <TrendingDown size={16} className="text-destructive" />
             </div>
             <div className="flex flex-1 items-center justify-between">
               <span className="text-sm font-semibold">Despesas</span>
