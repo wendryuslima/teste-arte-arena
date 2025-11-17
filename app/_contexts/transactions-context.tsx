@@ -19,42 +19,35 @@ const TransactionsContext = createContext<TransactionsContextType | undefined>(
 
 const STORAGE_KEY = "finance-app-transactions";
 
+const loadTransactionsFromStorage = (): Transaction[] => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return mockTransactions;
+
+    const parsed = JSON.parse(stored);
+    if (!Array.isArray(parsed) || parsed.length === 0) return mockTransactions;
+
+    return parsed.map((t: Transaction) => ({
+      ...t,
+      date: new Date(t.date),
+    }));
+  } catch {
+    return mockTransactions;
+  }
+};
+
 export const TransactionsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [transactions, setTransactions] =
-    useState<Transaction[]>(mockTransactions);
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [transactions, setTransactions] = useState<Transaction[]>(() =>
+    loadTransactionsFromStorage()
+  );
 
   useEffect(() => {
-    if (isInitialized) return;
-
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setTransactions(
-            parsed.map((t: Transaction) => ({
-              ...t,
-              date: new Date(t.date),
-            }))
-          );
-        }
-      } catch {
-        setTransactions(mockTransactions);
-      }
-    }
-    setIsInitialized(true);
-  }, [isInitialized]);
-
-  useEffect(() => {
-    if (isInitialized && transactions.length > 0) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
-    }
-  }, [transactions, isInitialized]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+  }, [transactions]);
 
   const addTransaction = (
     transaction: Omit<Transaction, "id" | "createdAt" | "updatedAt">

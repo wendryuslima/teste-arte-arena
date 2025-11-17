@@ -5,7 +5,6 @@ import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
-  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -21,6 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/_components/ui/table";
+import TransactionsToolbar from "./transactions-toolbar";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,9 +40,29 @@ const DataTable = <TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
+  const [searchValue, setSearchValue] = React.useState("");
+  const [typeFilter, setTypeFilter] = React.useState("all");
+  const [categoryFilter, setCategoryFilter] = React.useState("all");
+
+  const buildFilters = React.useCallback((): ColumnFiltersState => {
+    const filters: ColumnFiltersState = [];
+
+    if (searchValue) {
+      filters.push({ id: "name", value: searchValue });
+    }
+    if (typeFilter !== "all") {
+      filters.push({ id: "type", value: typeFilter });
+    }
+    if (categoryFilter !== "all") {
+      filters.push({ id: "category", value: categoryFilter });
+    }
+
+    return filters;
+  }, [searchValue, typeFilter, categoryFilter]);
+
+  React.useEffect(() => {
+    setColumnFilters(buildFilters());
+  }, [buildFilters]);
 
   const table = useReactTable({
     data,
@@ -53,35 +73,37 @@ const DataTable = <TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
-      columnVisibility,
-      rowSelection,
     },
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full space-y-4">
+      <TransactionsToolbar
+        searchValue={searchValue}
+        onSearchChange={setSearchValue}
+        typeFilter={typeFilter}
+        onTypeFilterChange={setTypeFilter}
+        categoryFilter={categoryFilter}
+        onCategoryFilterChange={setCategoryFilter}
+      />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
