@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogClose,
-} from "@/components/ui/dialog";
+} from "@/app/_components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -21,18 +21,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/app/_components/ui/form";
+import { Input } from "@/app/_components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { MoneyInput } from "@/components/money-input";
-import { DatePickerDemo } from "@/components/date-picker";
+} from "@/app/_components/ui/select";
+import { Button } from "@/app/_components/ui/button";
+import { MoneyInput } from "@/app/_components/money-input";
+import { DatePickerDemo } from "@/app/_components/date-picker";
 import {
   TRANSACTION_TYPE_OPTIONS,
   TRANSACTION_PAYMENT_METHOD_OPTIONS,
@@ -43,7 +43,7 @@ import {
   TransactionCategory,
   TransactionPaymentMethod,
   Transaction,
-} from "@/types/transaction";
+} from "@/app/_types/transaction";
 import { useTransactions } from "@/app/_contexts/transactions-context";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";

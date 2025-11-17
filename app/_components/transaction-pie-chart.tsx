@@ -1,15 +1,20 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/_components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/app/_components/ui/chart";
 import { PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, TrendingDown, PiggyBank } from "lucide-react";
-import { DashboardData } from "@/types/transaction";
-import { TransactionType } from "@/types/transaction";
+import { DashboardData } from "@/app/_types/transaction";
+import { TransactionType } from "@/app/_types/transaction";
 
 interface TransactionPieChartProps {
   data: DashboardData;

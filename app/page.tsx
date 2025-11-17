@@ -8,7 +8,7 @@ import SummaryCards from "./_components/summary-cards";
 import TransactionPieChart from "./_components/transaction-pie-chart";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import AddTransactionButton from "@/app/_components/add-transaction-button";
-import { useDashboardData } from "@/hooks/use-dashboard-data";
+import { useDashboardData } from "@/app/_hooks/use-dashboard-data";
 
 const Home = () => {
   const searchParams = useSearchParams();

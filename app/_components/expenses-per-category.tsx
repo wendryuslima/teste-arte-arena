@@ -1,11 +1,16 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Progress } from "@/components/ui/progress";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/_components/ui/card";
+import { ScrollArea } from "@/app/_components/ui/scroll-area";
+import { Progress } from "@/app/_components/ui/progress";
 import { TRANSACTION_CATEGORY_LABELS } from "./_constants/transactions";
-import { DashboardData } from "@/types/transaction";
-import { formatCurrency } from "@/lib/utils/currency";
+import { DashboardData } from "@/app/_types/transaction";
+import { formatCurrency } from "@/app/_lib/utils/currency";
 
 interface ExpensesPerCategoryProps {
   data: DashboardData;

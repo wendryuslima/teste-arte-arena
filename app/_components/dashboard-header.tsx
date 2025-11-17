@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/app/_components/ui/select";
 import { MONTHS } from "./_constants/transactions";
 
 const DashboardHeader = () => {

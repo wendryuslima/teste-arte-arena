@@ -2,7 +2,7 @@ import {
   TransactionCategory,
   TransactionPaymentMethod,
   TransactionType,
-} from "@/types/transaction";
+} from "@/app/_types/transaction";
 
 export const TRANSACTION_CATEGORY_LABELS: Record<TransactionCategory, string> =
   {

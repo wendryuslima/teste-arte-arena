@@ -1,9 +1,9 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/app/_components/ui/card";
 import { Wallet } from "lucide-react";
-import { formatCurrency } from "@/lib/utils/currency";
-import { DashboardData } from "@/types/transaction";
+import { formatCurrency } from "@/app/_lib/utils/currency";
+import { DashboardData } from "@/app/_types/transaction";
 
 interface BalanceCardProps {
   data: DashboardData;
@@ -17,9 +17,7 @@ const BalanceCard = ({ data }: BalanceCardProps) => {
           <div className="rounded-lg bg-primary/10 p-2">
             <Wallet size={16} className="text-primary" />
           </div>
-          <span className="text-sm font-semibold">
-            Saldo
-          </span>
+          <span className="text-sm font-semibold">Saldo</span>
         </div>
         <p className="text-4xl font-bold text-foreground">
           {formatCurrency(data.balance)}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { Transaction } from "@/types/transaction";
+import { Transaction } from "@/app/_types/transaction";
 import { mockTransactions } from "@/app/_data/mock-data";
 
 interface TransactionsContextType {

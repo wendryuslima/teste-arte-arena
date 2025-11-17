@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/ui/button";
 import { ArrowDownUp } from "lucide-react";
 import UpsertTransactionDialog from "./upsert-transaction-dialog";
 

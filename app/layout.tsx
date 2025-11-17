@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import { TransactionsProvider } from "./_contexts/transactions-context";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/app/_components/ui/sonner";
 
 const mulish = Mulish({
   subsets: ["latin-ext"],

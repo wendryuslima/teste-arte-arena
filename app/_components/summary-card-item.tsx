@@ -1,9 +1,9 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/app/_components/ui/card";
 import { LucideIcon } from "lucide-react";
-import { formatCurrency } from "@/lib/utils/currency";
-import { cn } from "@/lib/utils";
+import { formatCurrency } from "@/app/_lib/utils/currency";
+import { cn } from "@/app/_lib/utils";
 
 interface SummaryCardItemProps {
   icon: LucideIcon;

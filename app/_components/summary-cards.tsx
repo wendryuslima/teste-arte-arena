@@ -1,7 +1,7 @@
 "use client";
 
 import { PiggyBank, TrendingUp, TrendingDown } from "lucide-react";
-import { DashboardData } from "@/types/transaction";
+import { DashboardData } from "@/app/_types/transaction";
 import SummaryCardItem from "./summary-card-item";
 
 interface SummaryCardsProps {

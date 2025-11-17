@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { NumericFormat } from "react-number-format";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/_lib/utils";
 
 interface MoneyInputProps {
   placeholder?: string;

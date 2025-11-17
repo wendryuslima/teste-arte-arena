@@ -4,7 +4,7 @@ import {
   TransactionCategory,
   TransactionPaymentMethod,
   DashboardData,
-} from "@/types/transaction";
+} from "@/app/_types/transaction";
 
 export const mockTransactions: Transaction[] = [
   {
