@@ -1,14 +1,25 @@
-export default function Home() {
+import NavBar from "@/components/nav-bar";
+
+import { Button } from "@/components/ui/button";
+
+const Home = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold text-center mb-4">
-          Dashboard Financeiro
-        </h1>
-        <p className="text-center text-muted-foreground">
-          Sistema de gestão financeira pessoal
-        </p>
+    <>
+    <NavBar/>
+      <div className="flex flex-col space-y-6 overflow-hidden p-10 lg:overflow-hidden">
+        <div className="flex items-center justify-center">
+          <h1 className="text-2xl font-bold">Dashboard</h1>
+        </div>
+        <div className="flex flex-col items-center justify-between">
+          <div className="flex items-center gap-3"></div>
+        </div>
+
+        <div className="flex flex-col gap-4 lg:grid-cols-[2fr,1fr] lg:overflow-hidden">
+          <div className="flex flex-col gap-4 lg:overflow-hidden"></div>
+        </div>
       </div>
-    </main>
+    </>
   );
-}
+};
+
+export default Home;
