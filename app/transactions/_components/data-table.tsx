@@ -143,7 +143,9 @@ const DataTable = <TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-96 p-0">
-                  <EmptySearchResults />
+                  <div className="flex h-full min-h-[calc(100vh-350px)] items-center justify-center lg:min-h-0">
+                    <EmptySearchResults />
+                  </div>
                 </TableCell>
               </TableRow>
             )}
