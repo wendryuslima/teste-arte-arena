@@ -152,8 +152,8 @@ const DataTable = <TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between px-2">
-        <div className="flex-1 text-sm text-muted-foreground">
+      <div className="flex flex-col gap-4 px-2 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex-1 text-center text-sm text-muted-foreground lg:text-left">
           Mostrando{" "}
           {table.getState().pagination.pageIndex *
             table.getState().pagination.pageSize +
@@ -166,7 +166,7 @@ const DataTable = <TData, TValue>({
           )}{" "}
           de {table.getFilteredRowModel().rows.length} transação(ões)
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <Button
             variant="outline"
             size="sm"
