@@ -120,3 +120,71 @@ Para cálculos e transformações de dados, como os utilizados no dashboard, for
 **Lucide React** fornece ícones modernos e consistentes utilizados em toda a interface.
 
 A combinação dessas bibliotecas cria uma base sólida para uma aplicação moderna, performática e fácil de manter, seguindo as melhores práticas da comunidade React e Next.js.
+
+## Funcionalidades
+
+### Dashboard
+
+O dashboard oferece uma visão completa da situação financeira do usuário:
+
+- **Card de Saldo**: Exibe o saldo total calculado a partir de todas as transações (receitas - despesas - investimentos)
+- **Cards de Resumo**: Mostram totais separados por tipo (Receita, Despesas e Investimentos)
+- **Gráfico de Pizza**: Visualização da distribuição percentual dos tipos de transação
+- **Gastos por Categoria**: Lista detalhada mostrando o total gasto em cada categoria com barras de progresso
+- **Filtro por Mês**: Permite visualizar dados de um mês específico através de um seletor
+
+### Página de Transações
+
+A página de transações oferece uma interface completa para gerenciar todas as transações financeiras:
+
+- **Tabela Interativa**: Lista todas as transações com informações detalhadas (nome, tipo, categoria, valor, data, método de pagamento)
+- **Busca**: Campo de busca para filtrar transações por nome
+- **Filtros**: Filtros por tipo de transação (Receita, Despesa, Investimento) e por categoria
+- **Ordenação**: Possibilidade de ordenar as colunas clicando nos cabeçalhos da tabela
+- **Paginação**: Sistema de paginação para navegar entre as transações (10 itens por página)
+- **Ações**: Botões para editar e excluir transações diretamente da tabela
+- **Adicionar Transação**: Botão para criar novas transações através de um formulário modal
+
+### Gerenciamento de Transações
+
+- **Criar**: Formulário completo para adicionar novas transações com validação
+- **Editar**: Edição de transações existentes mantendo os dados originais
+- **Excluir**: Exclusão com confirmação para evitar remoções acidentais
+- **Validação**: Validação robusta de formulários usando Zod e React Hook Form
+
+### Fonte de Dados
+
+A aplicação utiliza dados mockados armazenados localmente no arquivo `app/_data/mock-data.ts`. Esses dados são carregados automaticamente quando não há dados salvos no localStorage. Os dados são persistidos no localStorage do navegador, permitindo que as alterações sejam mantidas entre sessões.
+
+## Responsividade
+
+A aplicação foi desenvolvida com foco em responsividade, garantindo uma experiência excelente em todos os dispositivos:
+
+- **Mobile First**: Design pensado primeiro para dispositivos móveis, com adaptação progressiva para telas maiores
+- **Breakpoints Tailwind**: Utilização dos breakpoints padrão do Tailwind CSS (sm, md, lg) para ajustar o layout
+- **Navegação Adaptativa**: Menu de navegação que se adapta ao tamanho da tela (vertical em mobile, horizontal em desktop)
+- **Tabela Responsiva**: Tabela de transações com scroll horizontal em telas menores e layout otimizado
+- **Grids Adaptativos**: Cards e gráficos que se reorganizam automaticamente (coluna única em mobile, múltiplas colunas em desktop)
+- **Formulários Responsivos**: Diálogos e formulários que se ajustam ao tamanho da tela
+- **Tipografia Escalável**: Tamanhos de fonte que se adaptam ao dispositivo
+
+### Exemplos de Responsividade
+
+- Dashboard: Grid de 1 coluna em mobile, 3 colunas em desktop para os cards de resumo
+- Gráficos: Layout empilhado em mobile, lado a lado em desktop
+- Tabela: Scroll horizontal em telas pequenas, layout completo em telas maiores
+- Navegação: Layout vertical centralizado em mobile, horizontal em desktop
+- Toolbar de Filtros: Elementos empilhados em mobile, em linha em desktop
+
+## Qualidade de Código
+
+O projeto segue boas práticas de desenvolvimento:
+
+- **TypeScript Strict Mode**: Configuração rigorosa de tipos para máxima segurança
+- **ESLint**: Linter configurado para manter padrões de código
+- **Prettier**: Formatador automático para consistência de estilo
+- **Componentização**: Componentes reutilizáveis com responsabilidade única
+- **Hooks Customizados**: Lógica reutilizável extraída em hooks personalizados
+- **Validação de Dados**: Schemas Zod para validação type-safe
+- **Acessibilidade**: Atributos ARIA e semântica HTML adequada
+- **Performance**: Uso de useMemo e useCallback para otimizações

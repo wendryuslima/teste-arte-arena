@@ -19,7 +19,7 @@ export const EmptyState = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center py-12 px-4 animate-fade-in",
+        "animate-fade-in flex flex-col items-center justify-center px-4 py-12",
         className
       )}
     >
@@ -49,4 +49,3 @@ export const EmptySearchResults = () => (
     description="Tente ajustar seus filtros ou termos de busca para encontrar o que procura."
   />
 );
-

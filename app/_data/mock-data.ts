@@ -476,5 +476,3 @@ export const mockTransactions: Transaction[] = [
     paymentMethod: TransactionPaymentMethod.CREDIT_CARD,
   },
 ];
-
-

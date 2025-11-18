@@ -22,11 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="">
-      <body className={`${mulish.variable} font-sans antialiased flex flex-col min-h-screen`}>
+      <body
+        className={`${mulish.variable} flex min-h-screen flex-col font-sans antialiased`}
+      >
         <TransactionsProvider>
-          <div className="flex-1">
-            {children}
-          </div>
+          <div className="flex-1">{children}</div>
           <Footer />
           <Toaster />
         </TransactionsProvider>

@@ -54,9 +54,11 @@ const Calendar = ({
         day_hidden: "invisible",
         ...classNames,
       }}
-      style={{
-        "--rdp-cell-size": "36px",
-      } as React.CSSProperties}
+      style={
+        {
+          "--rdp-cell-size": "36px",
+        } as React.CSSProperties
+      }
       components={{
         IconLeft: () => <ChevronLeft className="h-4 w-4" />,
         IconRight: () => <ChevronRight className="h-4 w-4" />,

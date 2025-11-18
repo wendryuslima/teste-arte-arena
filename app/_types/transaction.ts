@@ -55,4 +55,3 @@ export interface DashboardData {
   }>;
   lastTransaction: Transaction[];
 }
-

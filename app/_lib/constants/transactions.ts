@@ -4,7 +4,6 @@ import {
   TransactionType,
 } from "@/app/_types/transaction";
 
-
 export const TRANSACTION_CATEGORY_LABELS: Record<TransactionCategory, string> =
   {
     [TransactionCategory.HOUSING]: "Moradia",
@@ -63,4 +62,3 @@ export const MONTHS = [
   { value: "11", label: "Novembro" },
   { value: "12", label: "Dezembro" },
 ];
-

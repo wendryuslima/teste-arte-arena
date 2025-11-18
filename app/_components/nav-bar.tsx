@@ -13,7 +13,7 @@ const NavBar = () => {
       <div className="flex items-center justify-center gap-8 lg:gap-12">
         <Link
           href="/"
-          className={`text-base lg:text-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded ${
+          className={`rounded text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:text-xl ${
             pathname === "/"
               ? "font-bold text-primary"
               : "text-muted-foreground hover:text-foreground"
@@ -24,7 +24,7 @@ const NavBar = () => {
         </Link>
         <Link
           href="/transactions"
-          className={`text-base lg:text-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded ${
+          className={`rounded text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:text-xl ${
             pathname === "/transactions"
               ? "font-bold text-primary"
               : "text-muted-foreground hover:text-foreground"
