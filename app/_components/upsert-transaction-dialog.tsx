@@ -85,7 +85,7 @@ const UpsertTransactionDialog = ({
           isLoading={isLoading}
         />
 
-        <DialogFooter className="mt-4 lg:w-full lg:justify-between">
+        <DialogFooter className="mt-4 gap-2 lg:w-full lg:justify-between">
           <DialogClose asChild>
             <Button
               className="w-full lg:mt-0"

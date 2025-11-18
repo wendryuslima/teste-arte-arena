@@ -38,7 +38,7 @@ const DatePickerDemo = ({ value, onChange }: DatePickerDemoProps) => {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent className="w-auto p-0 h-[320px]" align="start">
         <Calendar
           mode="single"
           selected={value}
