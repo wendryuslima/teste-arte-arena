@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { Transaction } from "@/app/_types/transaction";
 import { mockTransactions } from "@/app/_data/mock-data";
+import { Transaction } from "@/app/_types/transaction";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface TransactionsContextType {
   transactions: Transaction[];
@@ -20,6 +20,10 @@ const TransactionsContext = createContext<TransactionsContextType | undefined>(
 const STORAGE_KEY = "finance-app-transactions";
 
 const loadTransactionsFromStorage = (): Transaction[] => {
+  if (typeof window === "undefined") {
+    return mockTransactions;
+  }
+
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return mockTransactions;
@@ -41,13 +45,21 @@ export const TransactionsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [transactions, setTransactions] = useState<Transaction[]>(() =>
-    loadTransactionsFromStorage()
-  );
+  const [transactions, setTransactions] =
+    useState<Transaction[]>(mockTransactions);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
-  }, [transactions]);
+    setIsMounted(true);
+    const loadedTransactions = loadTransactionsFromStorage();
+    setTransactions(loadedTransactions);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted && typeof window !== "undefined") {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+    }
+  }, [transactions, isMounted]);
 
   const addTransaction = (
     transaction: Omit<Transaction, "id" | "createdAt" | "updatedAt">
