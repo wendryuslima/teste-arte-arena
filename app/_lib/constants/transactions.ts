@@ -4,7 +4,7 @@ import {
   TransactionType,
 } from "@/app/_types/transaction";
 
-// Fonte única de verdade para labels
+
 export const TRANSACTION_CATEGORY_LABELS: Record<TransactionCategory, string> =
   {
     [TransactionCategory.HOUSING]: "Moradia",
@@ -37,7 +37,6 @@ export const TRANSACTION_TYPE_LABELS: Record<TransactionType, string> = {
   [TransactionType.INVESTMENT]: "Investimento",
 };
 
-// Derivar arrays de opções dos labels
 export const TRANSACTION_TYPE_OPTIONS = Object.entries(
   TRANSACTION_TYPE_LABELS
 ).map(([value, label]) => ({ value, label }));

@@ -128,7 +128,7 @@ const DataTable = <TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="transition-colors hover:bg-muted/50"
+                  className=""
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

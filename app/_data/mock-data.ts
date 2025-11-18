@@ -477,4 +477,4 @@ export const mockTransactions: Transaction[] = [
   },
 ];
 
-// Lógica de negócio movida para app/_lib/services/dashboard.service.ts
+
