@@ -42,6 +42,13 @@
       "rlig" 1,
       "calt" 1;
   }
+  
+
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer utilities {

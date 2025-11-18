@@ -20,13 +20,16 @@ interface DatePickerDemoProps {
 }
 
 const DatePickerDemo = ({ value, onChange }: DatePickerDemoProps) => {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          type="button"
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal",
+            "w-full justify-start text-left font-normal touch-manipulation",
             !value && "text-muted-foreground"
           )}
         >
@@ -38,11 +41,27 @@ const DatePickerDemo = ({ value, onChange }: DatePickerDemoProps) => {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 h-[320px]" align="start">
+      <PopoverContent
+        className="h-[320px] w-auto p-0 z-[100] touch-manipulation"
+        align="start"
+        onInteractOutside={(e) => {
+          
+          const target = e.target as HTMLElement;
+          if (target.closest('[role="dialog"]')) {
+            e.preventDefault();
+          }
+        }}
+      >
         <Calendar
           mode="single"
           selected={value}
-          onSelect={onChange}
+          onSelect={(date) => {
+            onChange?.(date);
+            
+            if (date) {
+              setOpen(false);
+            }
+          }}
           initialFocus
         />
       </PopoverContent>
