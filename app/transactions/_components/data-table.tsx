@@ -104,6 +104,9 @@ const DataTable = <TData, TValue>({
         categoryFilter={categoryFilter}
         onCategoryFilterChange={setCategoryFilter}
       />
+      <p className="text-xs text-muted-foreground/70 lg:hidden">
+        Deslize para o lado para ver mais informações
+      </p>
       <div className="animate-slide-up rounded-md border">
         <Table role="table" aria-label="Tabela de transações">
           <TableHeader>
