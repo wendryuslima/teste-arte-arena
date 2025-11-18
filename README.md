@@ -13,7 +13,11 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 ### Instalação
 
-1. Clone o repositório do projeto
+1. Clone o repositório do projeto:
+
+```bash
+git clone https://github.com/wendryuslima/teste-arte-arena
+```
 
 2. Instale as dependências do projeto executando:
 
